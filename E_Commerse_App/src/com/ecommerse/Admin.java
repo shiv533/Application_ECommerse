@@ -1,8 +1,102 @@
 package com.ecomerce;
+public class Admin {
+    private String username;
+    private String password;
+    private String firstName;
+    private String lastName;
+    private String email;
+    private String city;
+    private String mobileNumber;
 
-import java.util.List;
+    public Admin(String username, String password, String firstName, String lastName, String email, String city, String mobileNumber) {
+        this.username = username;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.city = city;
+        this.mobileNumber = mobileNumber;
+    }
 
-public class AdminOperations {
+    
+    public String getUsername() {
+		return username;
+	}
+
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+
+	public String getPassword() {
+		return password;
+	}
+
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+
+	public String getLastName() {
+		return lastName;
+	}
+
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+	public String getCity() {
+		return city;
+	}
+
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+
+	public String getMobileNumber() {
+		return mobileNumber;
+	}
+
+
+	public void setMobileNumber(String mobileNumber) {
+		this.mobileNumber = mobileNumber;
+	}
+
+
+	// Admin-specific methods
+	
+    public void addProduct(ProductManagement pm, int id, String name, String description, double price, int quantity) {
+        Product product = new Product(id, name, description, price, quantity);
+        pm.addProduct(product);
+        System.out.println("Product added successfully!");
+    }
+
     public void checkQuantity(ProductManagement pm, int productId) {
         Product product = pm.getProducts().stream().filter(p -> p.getId() == productId).findFirst().orElse(null);
         if (product != null) {
@@ -28,12 +122,6 @@ public class AdminOperations {
         } else {
             System.out.println("No history available or user not found.");
         }
-    }
-
-    public void addProduct(ProductManagement pm, int id, String name, String description, double price, int quantity) {
-        Product product = new Product(id, name, description, price, quantity);
-        pm.addProduct(product);
-        System.out.println("Product added successfully!");
     }
 
     public void calculateBill(UserManagement um, String username) {
